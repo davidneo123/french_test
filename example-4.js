@@ -2,7 +2,20 @@ import {cleanConsole, createAll} from './data';
 const companies = createAll();
 
 cleanConsole(4, companies);
-console.log('---- EXAMPLE 4 --- ', 'Put here your function');
+
+function integrate(comp = companies) {
+  const users = [];
+  comp.map((com) =>{
+    com.users.map((user) =>{
+      const userDef = {...user};
+      userDef['company'] = com.name;
+      users.push(userDef);
+    });
+  });
+  return users.sort((a, b)=>(a.age-b.age)*-1);
+}
+
+console.log('---- EXAMPLE 4 --- ', integrate());
 
 // -----------------------------------------------------------------------------
 // INSTRUCCIONES EN ESPAÑOL
