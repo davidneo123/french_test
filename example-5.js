@@ -1,8 +1,21 @@
 import {cleanConsole, createAll} from './data';
-const companies = createAll();
+import * as fn from './example-4';
 
+const companies = createAll();
 cleanConsole(5, companies);
-console.log('---- EXAMPLE 5 --- ', 'Put here your function');
+
+function reducer(comp) {
+  const users = fn.integrate(comp);
+  const reduced = {};
+  reduced['size'] = users.length;
+  let sumAges = 0;
+  users.map((user)=>sumAges+=user.age||0);
+  console.log(users);
+  reduced['average'] = sumAges/reduced.size;
+  return reduced;
+}
+
+console.log('---- EXAMPLE 5 --- ', reducer(companies));
 
 // -----------------------------------------------------------------------------
 // INSTRUCCIONES EN ESPAÑOL

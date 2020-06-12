@@ -3,7 +3,7 @@ const companies = createAll();
 
 cleanConsole(4, companies);
 
-function integrate(comp = companies) {
+function integrate(comp) {
   const users = [];
   comp.map((com) =>{
     com.users.map((user) =>{
@@ -15,8 +15,11 @@ function integrate(comp = companies) {
   return users.sort((a, b)=>(a.age-b.age)*-1);
 }
 
-console.log('---- EXAMPLE 4 --- ', integrate());
+console.log('---- EXAMPLE 4 --- ', integrate(companies));
 
+module.exports = {
+  integrate,
+};
 // -----------------------------------------------------------------------------
 // INSTRUCCIONES EN ESPAÑOL
 

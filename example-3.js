@@ -6,7 +6,6 @@ const companies = createAll();
 cleanConsole(3, companies);
 
 function validate(com) {
-  return fn.capitalize('dav');
   const companiesDef= [...com];
   companiesDef.map((comp)=>{
     comp.name = fn.capitalize(comp.name);
