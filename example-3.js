@@ -5,11 +5,20 @@ const companies = createAll();
 
 cleanConsole(3, companies);
 
-function validate() {
+function validate(com) {
   return fn.capitalize('dav');
+  const companiesDef= [...com];
+  companiesDef.map((comp)=>{
+    comp.name = fn.capitalize(comp.name);
+    comp.users = comp.users.map((user)=>{
+      user.firstName = fn.capitalize(user.firstName);
+      user.lastName = fn.capitalize(user.lastName);
+    });
+  });
+  return com === companies;
 }
 
-console.log('---- EXAMPLE 3 --- ', validate());
+console.log('---- EXAMPLE 3 --- ', validate(companies));
 
 // -----------------------------------------------------------------------------
 // INSTRUCCIONES EN ESPAÑOL
