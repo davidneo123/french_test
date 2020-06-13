@@ -8,10 +8,17 @@ function reducer(comp) {
   const users = fn.integrate(comp);
   const reduced = {};
   reduced['size'] = users.length;
+  reduced['hasCar'] = 0;
   let sumAges = 0;
-  users.map((user)=>sumAges+=user.age||0);
-  console.log(users);
+  let sumAgesCars = 0;
+  users.map((user)=> {
+    sumAges+=user.age||0;
+    sumAgesCars+=user.car?user.age||0:0;
+    reduced.hasCar += user.car?1:0;
+  });
+  console.log('companies is returning empty users. Please Try in your code please. Same for example 4');
   reduced['average'] = sumAges/reduced.size;
+  reduced['averageWithCar'] = sumAgesCars/reduced.hasCar;
   return reduced;
 }
 

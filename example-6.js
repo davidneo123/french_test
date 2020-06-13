@@ -1,9 +1,17 @@
 import {cleanConsole, createAll} from './data';
+import * as fn from './example-4';
 
 const companies = createAll();
 
 cleanConsole(6, companies);
-console.log('---- EXAMPLE 6 --- ', 'Put here your function');
+
+function abstract(users) {
+  console.log('users? Still empty!!', users);
+  const usersDef = {};
+  users.map((user)=>usersDef[''+user.firstName+user.lastName+user.age] = user.car);
+  return usersDef;
+}
+console.log('---- EXAMPLE 6 --- ', abstract(fn.integrate(companies)));
 
 // -----------------------------------------------------------------------------
 // INSTRUCCIONES EN ESPAÑOL

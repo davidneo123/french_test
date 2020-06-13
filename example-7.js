@@ -1,17 +1,76 @@
 import {cleanConsole, createAll} from './data';
 
 const companies = createAll();
-
 cleanConsole(7, companies);
-console.log('---- EXAMPLE 7 part 1 --- ', 'Put here your function');
-console.log('---- EXAMPLE 7 part 2 --- ', 'Put here your function');
-console.log('---- EXAMPLE 7 part 3 --- ', 'Put here your function');
-console.log('---- EXAMPLE 7 part 4 --- ', 'Put here your function');
-console.log('---- EXAMPLE 7 part 5 --- ', 'Put here your function');
-console.log('---- EXAMPLE 7 part 6 --- ', 'Put here your function');
-console.log('---- EXAMPLE 7 part 7 --- ', 'Put here your function');
-console.log('---- EXAMPLE 7 part 8 --- ', 'Put here your function');
-console.log('---- EXAMPLE 7 part 9 --- ', 'Put here your function');
+
+const part1 = (id) => companies[id].name;
+const part2 = (id) => companies.filter((com)=>com.id!==id);
+const part3 = (id) => {
+  companies[id].name = 'David';
+  companies[id].isOpen = 0==1;
+  companies[id].usersLength = 999;
+  return companies;
+};
+const part4 = (id, lastName, firstName, age, car) => {
+  const userId = companies[id].users.length + 1;
+  companies[id].users.push({id: userId, lastName, firstName, age, car});
+  companies[id].usersLength ++;
+  return companies;
+};
+const part5 = (id) => {
+  const newCorp = {'name': 'NovaCorp', 'isOpen': true, 'usersLength': 998};
+  if (companies[id]) {
+    companies[id] = {...newCorp};
+  } else {
+    companies.push({...newCorp});
+  }
+  return companies;
+};
+const part6 = (id, userId) => {
+  companies[id].users.filter((user)=>user.id!==userId);
+  companies[id].usersLength--;
+  return companies;
+};
+const part7 = (id, userId) => {
+  companies[id].users[userId].firstName = 'David';
+  companies[id].users[userId].lastName ='Arbeláez Villamizar';
+  companies[id].users[userId].age = 37;
+  companies[id].users[userId].car = false;
+  return companies;
+};
+
+const part8 = (id, userId) => {
+  const newUser = {'firstName': 'David', 'lastName': 'Arbeláez', 'age': 37, 'car': true};
+  if (companies[id].users[userId]) {
+    companies[id].users[userId] = {...newUser};
+  } else {
+    companies[id].users.push({...newUser});
+    companies[id].usersLength++;
+  }
+  return companies;
+};
+
+const part9 = (id, secondId, userId) => {
+  const user= companies[id].users[userId];
+  companies[id].users.filter((user)=>user.id !== userId);
+  companies[id].usersLength--;
+  companies[secondId].users.push(user);
+  companies[id].usersLength--;
+  return companies;
+};
+
+
+console.log('---- EXAMPLE 7 part 1 --- ', part1(0));
+console.log('---- EXAMPLE 7 part 2 --- ', part2(1));
+console.log('---- EXAMPLE 7 part 3 --- ', part3(2));
+console.log('---- EXAMPLE 7 part 4 --- ', part4(3, 'Delgado', 'Juan', 35, true));
+console.log('---- EXAMPLE 7 part 5 --- ', part5(4)); // send 8 to  prove other escenario
+console.log('---- EXAMPLE 7 part 5 --- ', part5(8)); // send 4 to  prove other escenario
+
+console.log('---- EXAMPLE 7 part 6 --- ', part6(3, 1)); // probar cuando retorne usuarios la base que me definiste
+console.log('---- EXAMPLE 7 part 7 --- ', part7(6, 1));
+console.log('---- EXAMPLE 7 part 8 --- ', part8(7, 1));
+console.log('---- EXAMPLE 7 part 9 --- ', part9(0, 1, 2));
 
 // -----------------------------------------------------------------------------
 // INSTRUCCIONES EN ESPAÑOL
